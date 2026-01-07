@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Magic Photo Card</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.0/aframe/build/aframe-ar.js"></script>
+</head>
+
+<body style="margin:0; overflow:hidden;">
+<a-scene embedded arjs="sourceType: webcam;">
+
+  <a-marker type="pattern" url="pattern-marker.patt">
+    <a-video 
+      src="#vid"
+      position="0 0 0"
+      rotation="-90 0 0"
+      width="1"
+      height="0.6"
+      autoplay
+      loop>
+    </a-video>
+  </a-marker>
+
+  <a-entity camera></a-entity>
+
+  <a-assets>
+    <video id="vid" src="video.mp4" autoplay loop playsinline></video>
+  </a-assets>
+
+</a-scene>
+</body>
+</html>
