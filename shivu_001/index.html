@@ -16,35 +16,48 @@
 <body>
 <div id="msg">Loading AR...</div>
 
-<!-- <a-scene
+<a-scene
   mindar-image="imageTargetSrc: targets.mind;"
   embedded
   vr-mode-ui="enabled: false"
   device-orientation-permission-ui="enabled: false">
 
   <a-assets>
-    <video id="video" src="video.mp4" loop muted playsinline crossorigin="anonymous"></video>
+    <video id="video" src="video.mp4" loop muted playsinline crossorigin="anonymous" preload="auto"></video>
   </a-assets>
 
   <a-camera position="0 0 0"></a-camera>
 
-  <a-entity mindar-image-target="targetIndex: 0">
-    <a-video src="#video"
-             width="1"
-             height="0.6"
-             position="0 0 0">
-    </a-video>
-  </a-entity>
+<a-entity mindar-image-target="targetIndex: 0" id="target">
+  <a-video src="#video"
+           width="1"
+           height="0.6"
+           position="0 0 0">
+  </a-video>
+</a-entity>
 
-</a-scene> -->
+</a-scene>
 
-<h1>SnapStickStudio Test</h1>
-<video src="video.mp4" controls autoplay muted></video>
+<!-- <h1>SnapStickStudio Test</h1>
+<video src="video.mp4" controls autoplay muted></video> -->
 
   
 <script>
   document.querySelector("a-scene").addEventListener("loaded", () => {
     document.getElementById("msg").innerText = "Camera loaded. Point at image.";
+  });
+</script>
+<script>
+  const video = document.querySelector("#video");
+  const target = document.querySelector("#target");
+
+  target.addEventListener("targetFound", () => {
+    video.play();
+  });
+
+  target.addEventListener("targetLost", () => {
+    video.pause();
+    video.currentTime = 0;
   });
 </script>
 
