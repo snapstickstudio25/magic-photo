@@ -16,7 +16,7 @@
 <body>
 <div id="msg">Loading AR...</div>
 
-<a-scene
+<!-- <a-scene
   mindar-image="imageTargetSrc: targets.mind;"
   embedded
   vr-mode-ui="enabled: false"
@@ -36,8 +36,12 @@
     </a-video>
   </a-entity>
 
-</a-scene>
+</a-scene> -->
 
+<h1>SnapStickStudio Test</h1>
+<video src="video.mp4" controls autoplay muted></video>
+
+  
 <script>
   document.querySelector("a-scene").addEventListener("loaded", () => {
     document.getElementById("msg").innerText = "Camera loaded. Point at image.";
