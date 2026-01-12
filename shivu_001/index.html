@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image.prod.js"></script>
+  <meta charset="utf-8" />
+  <title>SnapStickStudio AR</title>
+
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image.prod.js"></script>
+
+  <style>
+    body { margin: 0; overflow: hidden; }
+  </style>
 </head>
 
 <body>
@@ -12,15 +19,17 @@
   device-orientation-permission-ui="enabled: false">
 
   <a-assets>
-    <video id="video" src="video.mp4" loop crossorigin="anonymous"></video>
+    <video id="video" src="video.mp4" loop muted playsinline crossorigin="anonymous"></video>
   </a-assets>
 
   <a-camera position="0 0 0"></a-camera>
 
   <a-entity mindar-image-target="targetIndex: 0">
-    <a-video src="#video" width="1" height="0.6"
+    <a-video src="#video"
+             width="1"
+             height="0.6"
              position="0 0 0"
-             play-on-click>
+             autoplay>
     </a-video>
   </a-entity>
 
