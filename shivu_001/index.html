@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Magic Photo Card</title>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image.prod.js"></script>
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 </head>
 
-<body style="margin:0; overflow:hidden;">
-<a-scene embedded arjs="sourceType: webcam;">
-
-  <!-- <a-marker type="pattern" url="pattern-marker.patt"> -->
-  <a-marker preset="hiro">
-    <a-video 
-      src="#vid"
-      position="0 0 0"
-      rotation="-90 0 0"
-      width="1"
-      height="0.6">
-    </a-video>
-  </a-marker>
-
-  <a-entity camera></a-entity>
+<body>
+<a-scene
+  mindar-image="imageTargetSrc: targets.mind;"
+  vr-mode-ui="enabled: false"
+  device-orientation-permission-ui="enabled: false">
 
   <a-assets>
-    <video id="vid" src="video.mp4" muted autoplay loop playsinline></video>
+    <video id="video" src="video.mp4" loop crossorigin="anonymous"></video>
   </a-assets>
+
+  <a-camera position="0 0 0"></a-camera>
+
+  <a-entity mindar-image-target="targetIndex: 0">
+    <a-video src="#video" width="1" height="0.6"
+             position="0 0 0"
+             play-on-click>
+    </a-video>
+  </a-entity>
 
 </a-scene>
 </body>
