@@ -87,6 +87,13 @@
     console.log("TARGET LOST");
     video.pause();
   });
+
+  target.addEventListener("targetFound", () => {
+  setTimeout(() => {
+    video.play();
+  }, 800);
+});
+
 </script>
 
 </body>
