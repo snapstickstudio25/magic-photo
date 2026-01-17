@@ -126,23 +126,49 @@
 
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-    <a-entity mindar-image-target="targetIndex: 0">
+    <!-- <a-entity mindar-image-target="targetIndex: 0">
       <a-video
-        src="#vid"
-        width="1"
-        height="0.56"
-        position="0 0 0"
-        play-on-click
-      ></a-video>
-    </a-entity>
+  src="#vid"
+  width="1"
+  height="0.75"
+  position="0 0 0.01"
+  rotation="0 0 0">
+</a-video>
+
+    </a-entity> -->
+    <a-entity
+  mindar-image-target="targetIndex: 0"
+  id="target"
+>
+  <a-video
+    src="#vid"
+    width="1"
+    height="0.75"
+    position="0 0 0.01">
+  </a-video>
+</a-entity>
+
 
   </a-scene>
 
   <script>
-    const video = document.querySelector("#vid");
-    document.body.addEventListener("click", () => {
-      video.play();
-    });
+    // const video = document.querySelector("#vid");
+    // document.body.addEventListener("click", () => {
+    //   video.play();
+    // });
+
+    const target = document.querySelector("#target");
+  const video = document.querySelector("#vid");
+
+  target.addEventListener("targetFound", () => {
+    console.log("IMAGE FOUND");
+    video.play();
+  });
+
+  target.addEventListener("targetLost", () => {
+    console.log("IMAGE LOST");
+    video.pause();
+  });
   </script>
 
 </body>
